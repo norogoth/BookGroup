@@ -1,0 +1,29 @@
+﻿@using BookGroup.Components
+@code {
+    public string[] formNames = { "FirstName", "LastName", "Email" };
+}
+<div class="modal fade center" tabindex="-1" role="dialog" id="signup-modal">
+    <div class="modal-content">
+        <div class="modal-main-content">
+            <h3 class="modal-title">Sign up for BookGroup</h3>
+            <Form FormNames="@formNames"></Form>
+        </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary">Submit</button>
+                <button class="btn btn-secondary">Close</button>
+            </div>
+    </div>
+</div>
+
+
+@code {
+    public EventCallback<bool> OnClose { get; set; }
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+}

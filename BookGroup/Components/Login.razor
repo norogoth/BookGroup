@@ -1,0 +1,10 @@
+﻿@using BookGroup.Components
+@code {
+    string[] FormNames = { "email", "password" };
+}
+<Form FormNames="@FormNames"></Form>
+
+<SignUpModal></SignUpModal>
+
+<span>Or </span>
+<button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#signup-modal">Sign Up</button>

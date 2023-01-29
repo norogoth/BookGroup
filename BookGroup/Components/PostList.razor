@@ -1,0 +1,20 @@
+﻿@using BookGroup.Services
+@inject JsonFilePostsService PostsService
+
+@code {
+    private IEnumerable<BookGroup.Models.Post> posts;
+
+    protected override void OnInitialized()
+    {
+        posts = PostsService.GetPosts();
+    }
+
+}
+@foreach (BookGroup.Models.Post post in posts)
+{
+    <Post Post="@post"></Post>
+}
+
+<SubmitPostModal></SubmitPostModal>
+
+<button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#add-post-modal">+</button>

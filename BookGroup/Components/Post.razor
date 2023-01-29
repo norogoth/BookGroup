@@ -1,0 +1,12 @@
+﻿@using BookGroup.Models
+
+@code {
+    [Parameter]
+    public BookGroup.Models.Post post { get; set; }
+}
+<div class="card">
+    <b>User ID: @post.Id</b>
+    <p><b>Quote: </b>@post.Quote</p>
+    <p><b>Note: </b>@post.Note</p>
+</div>
+

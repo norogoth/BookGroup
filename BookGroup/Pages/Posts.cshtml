@@ -1,0 +1,9 @@
+﻿@page
+@using BookGroup.Components
+@model BookGroup.Pages.Shared.PostsModel
+@{
+    ViewData["Title"] = "Posts";
+}
+<h1>@ViewData["Title"]</h1>
+
+@(await Html.RenderComponentAsync<PostList>(RenderMode.ServerPrerendered))

@@ -1,0 +1,10 @@
+﻿@page
+@using BookGroup.Components
+@model BookGroup.Pages.LoginModel
+@{
+    ViewData["Title"] = "Log In";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@(await Html.RenderComponentAsync<Login>(RenderMode.ServerPrerendered))

@@ -1,0 +1,17 @@
+﻿@using System.Globalization
+@code {
+    [Parameter]
+    public IEnumerable<string> FormNames { get; set; }
+}
+<form method="post">
+    @foreach (string name in FormNames)
+    {
+        TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+        string titleCaseName = textInfo.ToTitleCase(name);
+        <div class="form-group">
+            <label for="input" + titleCaseName>@titleCaseName</label>
+            <input name="email" class="form-control" id="input" + titleCaseName>
+        </div>
+    }
+
+</form>
