@@ -1,23 +1,28 @@
 ﻿@using BookGroup.Components
+@using Microsoft.AspNetCore.Components.Forms
 @code {
     public string[] formNames = { "FirstName", "LastName", "Email" };
 }
-<div class="modal fade center" tabindex="-1" role="dialog" id="signup-modal">
-    <div class="modal-content">
-        <div class="modal-main-content">
-            <h3 class="modal-title">Sign up for BookGroup</h3>
-            <Form FormNames="@formNames"></Form>
-        </div>
+
+<div class="modal fade center" data-dismiss="modal" tabindex="-1" role="dialog" id="signup-modal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-main-content">
+                <h3 class="modal-title">Sign up for BookGroup</h3>
+                <Form_old FormNames="@formNames"></Form_old>
+            </div>
             <div class="modal-footer">
                 <button class="btn btn-primary">Submit</button>
-                <button class="btn btn-secondary">Close</button>
+                <button @onclick="(e => ToggleModal())" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
+        </div>
     </div>
-</div>
 
+</div>
 
 @code {
     public EventCallback<bool> OnClose { get; set; }
+    bool modalState = true;
     private Task ModalCancel()
     {
         return OnClose.InvokeAsync(false);
@@ -25,5 +30,9 @@
     private Task ModalOk()
     {
         return OnClose.InvokeAsync(true);
+    }
+    private void ToggleModal()
+    {
+        modalState = !modalState;
     }
 }
