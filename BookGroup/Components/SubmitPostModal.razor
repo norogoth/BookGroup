@@ -6,26 +6,26 @@
 
 <div class="modal fade center" tabindex="-1" role="dialog" id="add-post-modal">
     <div class="modal-content">
-        <EditForm Model="@post" OnSubmit="@HandleSubmit">
-            <p>test 1</p>
+        <EditForm Model="@post" OnSubmit="@Debug">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
             <div class="modal-main-content">
                 <h3 class="modal-title">Submit a new post</h3>
 
                 <div class="form-group">
                     <label for="inputQuote">Quote</label>
-                    <InputText name="quote" @bind-Value="@post.Quote"class="form-control" id="inputQuote" aria-describedby="quoteHelp" placeholder="Alas poor Yorick, I knew him well . . ." />
-                    <small id="emailHelp" class="form-text text-muted">Submit a quote or a general observation</small>
+                    <InputText name="quote" @bind-Value="@post.Quote" class="form-control" id="inputQuote" aria-describedby="quoteHelp" placeholder="Alas poor Yorick, I knew him well . . ." />
+                    <small id="quoteHelp" class="form-text text-muted">Submit a quote or a general observation</small>
                 </div>
                 <div class="form-group">
                     <label for="inputQuoteLocation">Location of Quote</label>
-                    <InputText name="quote" class="form-control" id="inputQuoteLocation" placeholder="End of chapter 5.2 / page 500 in Oxford edition" />
+                    <InputText @bind-Value="@post.QuoteLocation" name="quote" class="form-control" id="inputQuoteLocation" placeholder="End of chapter 5.2 / page 500 in Oxford edition" />
                 </div>
             </div>
 
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button OnClick="Debug" type="submit" class="btn btn-primary">Submit</button>
                 <button class="btn btn-secondary">Close</button>
-                <button @onclick="Debug">Sample</button>
             </div>
         </EditForm>
     </div>
@@ -34,13 +34,13 @@
 
 @code {
     //private User user = new User();
-    private BookGroup.Models.Post post = new BookGroup.Models.Post();
+    BookGroup.Models.Post post = new BookGroup.Models.Post();
     void Debug()
     {
         int a = 1;
         a++;
     }
-    private void HandleSubmit()
+    private void HandleValidSubmit()
     {
         Logger.LogInformation("HandleSubmit called");
         //process form
