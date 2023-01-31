@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
+using BookGroup.Services;
 
 namespace BookGroup.Models
 {
@@ -18,5 +19,15 @@ namespace BookGroup.Models
         public string QuoteLocation { get; set; }
         public string Note { get; set; }
         public override string ToString() => JsonSerializer.Serialize<Post>(this);
+        /*
+        public Post(int userId, string quote)
+        {
+            //int Id = JsonFilePostsService.GetNewId();
+            CreatorUserId = userId;
+            //quote = quote;
+
+        }
+        */
     }
+
 }

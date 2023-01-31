@@ -32,5 +32,24 @@ namespace BookGroup.Services
                 });
             }
         }
+        public void AddPost(int userId, string quote)
+        {
+            IEnumerable<Post> posts = GetPosts();
+            //Post newPost = new Post(userId, quote);
+            //posts.Add(newPost);
+        }
+        public int GetNewId()
+        {
+            IEnumerable<Post> posts = GetPosts();
+            int maxId = 0;
+            foreach (Post post in posts)
+            {
+                if (post.Id > maxId)
+                {
+                    maxId = post.Id;
+                }
+            }
+            return maxId + 1;
+        }
     }
 }
